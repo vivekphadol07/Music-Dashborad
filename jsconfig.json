@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "http://localhost:3000@/*": ["./src/*"]
+    }
+  }
+}
