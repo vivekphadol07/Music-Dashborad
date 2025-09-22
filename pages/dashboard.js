@@ -92,7 +92,7 @@ export default function Dashboard({ toggleTheme, theme }) {
         <TrackTable
           tracks={tracks}
           onDelete={(id) => setTracks(tracks.filter((t) => t.id !== id))}
-          darkMode={theme === "dark"} // pass theme to TrackTable
+          darkMode={theme === "dark"} 
         />
       )}
 

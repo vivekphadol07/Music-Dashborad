@@ -1,4 +1,4 @@
-let tracks = [
+const tracks = [
   { id: "1", title: "Midnight Drive", artist: "Neon Roads", releaseDate: "2024-07-12", genre: "Synthwave", status: "Published" },
   { id: "2", title: "Sunset Bloom", artist: "Lila Ray", releaseDate: "2025-04-01", genre: "Indie Pop", status: "Draft" }
 ];
