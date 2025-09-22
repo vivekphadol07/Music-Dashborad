@@ -8,14 +8,27 @@ export default function Dashboard({ toggleTheme, theme }) {
   const [q, setQ] = useState("");
   const [loading, setLoading] = useState(false);
 
+
   useEffect(() => {
-    const s = localStorage.getItem("session");
-    if (!s) {
+    const session = localStorage.getItem("session");
+    if (!session) {
       window.location.href = "/";
       return;
     }
-    fetchTracks();
+
+    const storedTracks = JSON.parse(localStorage.getItem("tracks") || "[]");
+    if (storedTracks.length === 0) {
+      const defaultTracks = [
+        { id: "1", title: "Midnight Drive", artist: "Neon Roads", releaseDate: "2024-07-12", genre: "Synthwave", status: "Published" },
+        { id: "2", title: "Sunset Bloom", artist: "Lila Ray", releaseDate: "2025-04-01", genre: "Indie Pop", status: "Draft" }
+      ];
+      localStorage.setItem("tracks", JSON.stringify(defaultTracks));
+      setTracks(defaultTracks);
+    } else {
+      setTracks(storedTracks);
+    }
   }, []);
+
 
   const fetchTracks = (search) => {
     setLoading(true);
@@ -35,19 +48,23 @@ export default function Dashboard({ toggleTheme, theme }) {
     setLoading(false);
   };
 
-
   const onSearch = (e) => {
     e.preventDefault();
     fetchTracks(q);
   };
 
+
+  const handleDelete = (id) => {
+    const updatedTracks = tracks.filter(t => t.id !== id);
+    setTracks(updatedTracks);
+    localStorage.setItem("tracks", JSON.stringify(updatedTracks));
+  };
+
   return (
     <Layout toggleTheme={toggleTheme} theme={theme}>
-      {/* Header row */}
+      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-        <h2 className="text-2xl font-semibold dark:text-white">
-          Dashboard
-        </h2>
+        <h2 className="text-2xl font-semibold dark:text-white">Dashboard</h2>
         <div className="flex gap-2">
           <Link href="/upload" legacyBehavior>
             <a className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
@@ -57,20 +74,13 @@ export default function Dashboard({ toggleTheme, theme }) {
         </div>
       </div>
 
-      {/* Search bar */}
-      <form
-        onSubmit={onSearch}
-        className="flex flex-col sm:flex-row gap-2 mb-6"
-      >
+      {/* Search Bar */}
+      <form onSubmit={onSearch} className="flex flex-col sm:flex-row gap-2 mb-6">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Search tracks / artist / genre"
-          className="flex-1 p-3 border rounded-lg 
-             bg-white dark:bg-gray-700 
-             text-gray-900 dark:text-white 
-             border-gray-300 dark:border-gray-600 
-             focus:ring-2 focus:ring-green-500 outline-none"
+          className="flex-1 p-3 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-green-500 outline-none"
         />
         <div className="flex gap-2">
           <button
@@ -92,7 +102,7 @@ export default function Dashboard({ toggleTheme, theme }) {
         </div>
       </form>
 
-      {/* Table */}
+      {/* Track Table */}
       {loading ? (
         <div className="text-center py-6 text-gray-500 dark:text-gray-400">
           Loading...
@@ -100,7 +110,7 @@ export default function Dashboard({ toggleTheme, theme }) {
       ) : (
         <TrackTable
           tracks={tracks}
-          onDelete={(id) => setTracks(tracks.filter((t) => t.id !== id))}
+          onDelete={handleDelete}
           darkMode={theme === "dark"}
         />
       )}

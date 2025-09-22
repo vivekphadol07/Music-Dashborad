@@ -5,42 +5,37 @@ export default function TrackForm({ onSuccess }) {
   const [artist, setArtist] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
   const [genre, setGenre] = useState("");
-
   const [loading, setLoading] = useState(false);
 
- const handleSubmit = (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  try {
-    const newTrack = {
-      id: Date.now().toString(),
-      title,
-      artist,
-      releaseDate: releaseDate || new Date().toISOString().slice(0, 10),
-      genre: genre || "Unknown",
-      status: "Draft",
-    };
+    try {
+      const newTrack = {
+        id: Date.now().toString(),
+        title,
+        artist,
+        releaseDate: releaseDate || new Date().toISOString().slice(0, 10),
+        genre: genre || "Unknown",
+        status: "Draft",
+      };
 
-    const storedTracks = JSON.parse(localStorage.getItem("tracks") || "[]");
+      const storedTracks = JSON.parse(localStorage.getItem("tracks") || "[]");
+      const updatedTracks = [newTrack, ...storedTracks];
+      localStorage.setItem("tracks", JSON.stringify(updatedTracks));
 
-    const updatedTracks = [newTrack, ...storedTracks];
+      setTitle("");
+      setArtist("");
+      setReleaseDate("");
+      setGenre("");
 
-    localStorage.setItem("tracks", JSON.stringify(updatedTracks));
-
-    setTitle("");
-    setArtist("");
-    setReleaseDate("");
-    setGenre("");
-
-    onSuccess && onSuccess(newTrack);
-  } catch (err) {
-    alert("Error creating track");
-  } finally {
-    setLoading(false);
-  }
-};
-
+      onSuccess && onSuccess(newTrack);
+    } catch (err) {
+      alert("Error creating track");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
