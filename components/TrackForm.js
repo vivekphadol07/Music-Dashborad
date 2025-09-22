@@ -8,27 +8,39 @@ export default function TrackForm({ onSuccess }) {
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await fetch("/api/tracks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, artist, releaseDate, genre }),
-      });
-      if (!res.ok) throw new Error("Failed");
-      const json = await res.json();
-      setTitle("");
-      setArtist("");
-      setReleaseDate("");
-      setGenre("");
-      onSuccess && onSuccess(json);
-    } catch (err) {
-      alert("Error creating track");
-    } finally {
-      setLoading(false);
-    }
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const newTrack = {
+      id: Date.now().toString(),
+      title,
+      artist,
+      releaseDate: releaseDate || new Date().toISOString().slice(0, 10),
+      genre: genre || "Unknown",
+      status: "Draft",
+    };
+
+    const storedTracks = JSON.parse(localStorage.getItem("tracks") || "[]");
+
+    const updatedTracks = [newTrack, ...storedTracks];
+
+    localStorage.setItem("tracks", JSON.stringify(updatedTracks));
+
+    setTitle("");
+    setArtist("");
+    setReleaseDate("");
+    setGenre("");
+
+    onSuccess && onSuccess(newTrack);
+  } catch (err) {
+    alert("Error creating track");
+  } finally {
+    setLoading(false);
+  }
+};
+
   };
 
   return (

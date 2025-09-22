@@ -17,15 +17,24 @@ export default function Dashboard({ toggleTheme, theme }) {
     fetchTracks();
   }, []);
 
-  const fetchTracks = async (search) => {
+  const fetchTracks = (search) => {
     setLoading(true);
-    const url =
-      "/api/tracks" + (search ? `?q=${encodeURIComponent(search)}` : "");
-    const res = await fetch(url);
-    const json = await res.json();
-    setTracks(json);
+    let storedTracks = JSON.parse(localStorage.getItem("tracks") || "[]");
+
+    if (search) {
+      const ql = search.toLowerCase();
+      storedTracks = storedTracks.filter(
+        t =>
+          t.title.toLowerCase().includes(ql) ||
+          t.artist.toLowerCase().includes(ql) ||
+          t.genre.toLowerCase().includes(ql)
+      );
+    }
+
+    setTracks(storedTracks);
     setLoading(false);
   };
+
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -92,7 +101,7 @@ export default function Dashboard({ toggleTheme, theme }) {
         <TrackTable
           tracks={tracks}
           onDelete={(id) => setTracks(tracks.filter((t) => t.id !== id))}
-          darkMode={theme === "dark"} 
+          darkMode={theme === "dark"}
         />
       )}
 
