@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* small theme vars */
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+}
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --text: #e6f0ff;
+}
+body { background: var(--bg); color: var(--text); }
