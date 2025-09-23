@@ -9,25 +9,28 @@ export default function Dashboard({ toggleTheme, theme }) {
   const [loading, setLoading] = useState(false);
 
 
-  useEffect(() => {
-    const session = localStorage.getItem("session");
-    if (!session) {
-      window.location.href = "/";
-      return;
-    }
+    const BASE_PATH = "/Music-Dashborad"; // your repo name
 
-    const storedTracks = JSON.parse(localStorage.getItem("tracks") || "[]");
-    if (storedTracks.length === 0) {
-      const defaultTracks = [
-        { id: "1", title: "Midnight Drive", artist: "Neon Roads", releaseDate: "2024-07-12", genre: "Synthwave", status: "Published" },
-        { id: "2", title: "Sunset Bloom", artist: "Lila Ray", releaseDate: "2025-04-01", genre: "Indie Pop", status: "Draft" }
-      ];
-      localStorage.setItem("tracks", JSON.stringify(defaultTracks));
-      setTracks(defaultTracks);
-    } else {
-      setTracks(storedTracks);
-    }
-  }, []);
+    useEffect(() => {
+      const session = localStorage.getItem("session");
+      if (!session) {
+        window.location.href = `${BASE_PATH}/`; // redirect to correct login
+        return;
+      }
+
+      const storedTracks = JSON.parse(localStorage.getItem("tracks") || "[]");
+      if (storedTracks.length === 0) {
+        const defaultTracks = [
+          { id: "1", title: "Midnight Drive", artist: "Neon Roads", releaseDate: "2024-07-12", genre: "Synthwave", status: "Published" },
+          { id: "2", title: "Sunset Bloom", artist: "Lila Ray", releaseDate: "2025-04-01", genre: "Indie Pop", status: "Draft" }
+        ];
+        localStorage.setItem("tracks", JSON.stringify(defaultTracks));
+        setTracks(defaultTracks);
+      } else {
+        setTracks(storedTracks);
+      }
+    }, []);
+
 
 
   const fetchTracks = (search) => {
