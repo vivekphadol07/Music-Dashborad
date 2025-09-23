@@ -71,10 +71,8 @@ export default function TrackTable({ tracks, onDelete }) {
               {/* Actions */}
               <td className="p-3 flex justify-center space-x-4">
                 {/* View */}
-                <Link href={`/track/${t.id}`} legacyBehavior>
-                  <a className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                <Link href={`/track/${t.id}`} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"or>
                     <MdRemoveRedEye size={20} />
-                  </a>
                 </Link>
 
                 {/* Delete */}

@@ -66,10 +66,8 @@ export default function Dashboard({ toggleTheme, theme }) {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <h2 className="text-2xl font-semibold dark:text-white">Dashboard</h2>
         <div className="flex gap-2">
-          <Link href="/upload" legacyBehavior>
-            <a className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+          <Link href="/upload" className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
               Upload Track
-            </a>
           </Link>
         </div>
       </div>

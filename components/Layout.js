@@ -13,15 +13,15 @@ export default function Layout({ children, toggleTheme, theme }) {
     <div className="min-h-screen flex flex-col">
       <header className="bg-white/70 backdrop-blur-sm border-b p-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Link href="/dashboard" legacyBehavior>
-            <a className="text-xl font-bold">MyMusic</a>
+          <Link href="/dashboard"className="text-xl font-bold">
+            MyMusic
           </Link>
           <nav className="hidden md:flex gap-3 text-sm text-gray-600">
-            <Link href="/dashboard" legacyBehavior>
-              <a>Dashboard</a>
+            <Link href="/dashboard" >
+              Dashboard
             </Link>
-            <Link href="/upload" legacyBehavior>
-              <a>Upload</a>
+            <Link href="/upload" >
+              Upload
             </Link>
           </nav>
         </div>
