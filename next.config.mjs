@@ -1,8 +1,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  basePath: '/Music-Dashborad',  
+  reactStrictMode: true,  
 };
 
 export default nextConfig;
