@@ -44,7 +44,8 @@ It allows users to **log in, upload tracks, view details, search, and manage tra
 │ └── api/tracks.js # API route for managing tracks    
 ├── public/images # Background images for login    
 ├── styles      
+
 │ └── globals.css      
 └── README.md  
 
-## View it live here: [MyMusic-App Demo](https://vivekphadol07.github.io/Music-Dashborad/)
+## View it live here: [MyMusic-App Demo](https://vivekphadol07.github.io/Music-Dashboard/)
