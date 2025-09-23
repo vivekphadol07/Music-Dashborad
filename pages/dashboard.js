@@ -12,7 +12,7 @@ export default function Dashboard({ toggleTheme, theme }) {
   useEffect(() => {
     const session = localStorage.getItem("session");
     if (!session) {
-      window.location.href = "/";
+      window.location.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/`;
       return;
     }
 
