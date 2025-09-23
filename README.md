@@ -45,4 +45,6 @@ It allows users to **log in, upload tracks, view details, search, and manage tra
 ├── public/images # Background images for login    
 ├── styles      
 │ └── globals.css      
-└── README.md      
+└── README.md  
+
+## View it live here: [MyMusic-App Demo](https://vivekphadol07.github.io/Music-Dashboard/)
