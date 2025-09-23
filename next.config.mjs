@@ -1,7 +1,8 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-  basePath: "/Music-Dashboard",  
+  output: "export",
+  basePath: "/Music-Dashboard",
   assetPrefix: "/Music-Dashboard/",
 };
 
