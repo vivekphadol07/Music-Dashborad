@@ -6,11 +6,10 @@ export default function Login({ toggleTheme, theme }) {
   const router = useRouter();
   const [user, setUser] = useState({ username: "", password: "" });
 
-  const BASE_PATH = "/Music-Dashborad";
 
   useEffect(() => {
     const s = localStorage.getItem("session");
-    if (s) router.replace(`${BASE_PATH}/`);
+    if (s) router.replace("/");
   }, [router]);
 
 

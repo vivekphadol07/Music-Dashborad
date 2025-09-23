@@ -9,12 +9,10 @@ export default function Dashboard({ toggleTheme, theme }) {
   const [loading, setLoading] = useState(false);
 
 
-    const BASE_PATH = "/Music-Dashborad"; // your repo name
-
     useEffect(() => {
       const session = localStorage.getItem("session");
       if (!session) {
-        window.location.href = `${BASE_PATH}/`; // redirect to correct login
+        window.location.href = "/"; 
         return;
       }
 
