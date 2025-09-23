@@ -16,7 +16,7 @@ export default function Login({ toggleTheme, theme }) {
     if (!user.username || !user.password)
       return alert("Enter credentials");
     localStorage.setItem("session", JSON.stringify({ username: user.username }));
-    router.push("/dashboard");
+    router.push("/Music-Dashborad/dashboard");
   };
 
   const lightBg = "./images/music.jpg";
