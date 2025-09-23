@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  MyMusic – Next.js Music Management App
 
-## Getting Started
+MyMusic is a simple **music management web app** built with **Next.js, React, and Tailwind CSS**.  
+It allows users to **log in, upload tracks, view details, search, and manage tracks** with support for **light/dark mode**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+##  Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-  **Authentication (Local Storage based session)**
+-  **Upload new tracks** with title, artist, release date, and genre
+-  **Dashboard** to view all tracks in a table
+-  **Search tracks** by title, artist, or genre
+-  **Delete tracks**
+-  **View track details**
+-  **Dark/Light theme toggle** (saved in localStorage)
+-  **Local storage persistence** for session and tracks
+-  **Custom login page with background images**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+##  Tech Stack
 
-## Learn More
+- **Frontend Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **State Management**: React Hooks (`useState`, `useEffect`)
+- **Storage**: Browser LocalStorage
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+##  Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+├── components
+│ ├── Layout.js # Shared layout with header/footer
+│ ├── TrackForm.js # Upload form for new tracks
+│ ├── TrackTable.js # Track list table with actions
+├── pages
+│ ├── _app.js # App wrapper with theme support
+│ ├── index.js # Login page
+│ ├── dashboard.js # Dashboard with track list + search
+│ ├── upload.js # Upload track page
+│ ├── track/[id].js # Track details page
+│ └── api/tracks.js # API route for managing tracks
+├── public/images # Background images for login
+├── styles
+│ └── globals.css
+└── README.md
