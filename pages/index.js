@@ -9,7 +9,7 @@ export default function Login({ toggleTheme, theme }) {
 
   useEffect(() => {
     const s = localStorage.getItem("session");
-    if (s) router.replace("/");
+    if (s) router.replace("/dashboard");
   }, [router]);
 
 
