@@ -10,7 +10,7 @@ export default function Login({ toggleTheme, theme }) {
 
   useEffect(() => {
     const s = localStorage.getItem("session");
-    if (s) router.replace(`${BASE_PATH}/dashboard`);
+    if (s) router.replace(`${BASE_PATH}/`);
   }, [router]);
 
 
@@ -21,7 +21,7 @@ export default function Login({ toggleTheme, theme }) {
 
     localStorage.setItem("session", JSON.stringify({ username: user.username }));
     
-    router.push(`${BASE_PATH}/dashboard`);
+    router.push("dashboard");
   };
 
 
