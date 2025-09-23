@@ -6,18 +6,24 @@ export default function Login({ toggleTheme, theme }) {
   const router = useRouter();
   const [user, setUser] = useState({ username: "", password: "" });
 
+  const BASE_PATH = "/Music-Dashborad";
+
   useEffect(() => {
     const s = localStorage.getItem("session");
-    if (s) router.replace("/dashboard");
+    if (s) router.replace(`${BASE_PATH}/dashboard`);
   }, [router]);
+
 
   const handle = (e) => {
     e.preventDefault();
     if (!user.username || !user.password)
       return alert("Enter credentials");
+
     localStorage.setItem("session", JSON.stringify({ username: user.username }));
-    router.push("/Music-Dashborad/dashboard");
+    
+    router.push(`${BASE_PATH}/dashboard`);
   };
+
 
   const lightBg = "./images/music.jpg";
   const darkBg = "./images/musicdark.png";
