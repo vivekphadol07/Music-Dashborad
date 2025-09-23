@@ -20,7 +20,7 @@ export default function Login({ toggleTheme, theme }) {
 
     localStorage.setItem("session", JSON.stringify({ username: user.username }));
     
-    router.push("dashboard");
+    router.push("/dashboard");
   };
 
 
