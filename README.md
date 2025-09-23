@@ -31,18 +31,18 @@ It allows users to **log in, upload tracks, view details, search, and manage tra
 
 ##  Project Structure
 
-├── components
-│ ├── Layout.js # Shared layout with header/footer
-│ ├── TrackForm.js # Upload form for new tracks
-│ ├── TrackTable.js # Track list table with actions
-├── pages
-│ ├── _app.js # App wrapper with theme support
-│ ├── index.js # Login page
-│ ├── dashboard.js # Dashboard with track list + search
-│ ├── upload.js # Upload track page
-│ ├── track/[id].js # Track details page
-│ └── api/tracks.js # API route for managing tracks
-├── public/images # Background images for login
-├── styles
-│ └── globals.css
-└── README.md
+├── components      
+│ ├── Layout.js # Shared layout with header/footer    
+│ ├── TrackForm.js # Upload form for new tracks      
+│ ├── TrackTable.js # Track list table with actions      
+├── pages      
+│ ├── _app.js # App wrapper with theme support      
+│ ├── index.js # Login page    
+│ ├── dashboard.js # Dashboard with track list + search      
+│ ├── upload.js # Upload track page    
+│ ├── track/[id].js # Track details page    
+│ └── api/tracks.js # API route for managing tracks    
+├── public/images # Background images for login    
+├── styles      
+│ └── globals.css      
+└── README.md      
