@@ -69,7 +69,7 @@ export default function TrackTable({ tracks, onDelete }) {
               </td>
 
               {/* Actions */}
-              \<td className="p-3 flex justify-center space-x-4">
+              <td className="p-3 flex justify-center space-x-4">
                 {/* View */}
                 <Link
                   href={`/track/${t.id}`}
